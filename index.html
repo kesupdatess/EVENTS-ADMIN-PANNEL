@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KES Events Admin</title>
+<title>Events Admin | KES Updates</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -66,6 +66,8 @@ body {
   gap: 8px;
   font-weight: 700;
   font-size: 0.95rem;
+  text-decoration: none;
+  color: var(--text);
 }
 
 .top-bar-brand span:first-child { font-size: 1.3rem; }
@@ -130,6 +132,7 @@ body {
 .btn-outline { background: var(--card); color: var(--text); border: 1px solid var(--border); }
 .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
 .btn-danger { background: rgba(220, 38, 38, 0.1); color: var(--danger); border: 1px solid rgba(220, 38, 38, 0.2); }
+.btn-success { background: rgba(5, 150, 105, 0.1); color: var(--success); border: 1px solid rgba(5, 150, 105, 0.2); }
 .btn-sm { padding: 7px 14px; font-size: 0.8rem; }
 
 .card {
@@ -252,13 +255,12 @@ body {
 <body>
 
 <div class="top-bar">
-  <div class="top-bar-brand">
+  <a href="index.html" class="top-bar-brand">
     <span>📅</span>
-    <span>KES Events Admin</span>
-  </div>
+    <span>Events Admin</span>
+  </a>
   <div style="display:flex;gap:6px;align-items:center;">
     <a href="events.html" target="_blank" class="btn btn-outline btn-sm">🌐 View Public Page</a>
-    <a href="admin.html" class="btn btn-outline btn-sm">📋 Notices Admin</a>
     <button class="icon-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
   </div>
 </div>
@@ -352,13 +354,13 @@ body {
 // ═══════════════════════════════════════════════════════
 // SUPABASE CONFIGURATION
 // ═══════════════════════════════════════════════════════
-const SUPABASE_URL = 'https://jbyctjddlbyddzavmczg.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpieWN0amRkbGJ5ZGR6YXZtY3pnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIzNzE2NzYsImV4cCI6MjA5Nzk0NzY3Nn0.klEa0-zSGbHZYA-fYiHYg4ceoL1PQ87gowGEbvVmhqU';
+const SUPABASE_URL = 'https://uegdizdnminwhkxcdcle.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVlZ2RpemRubWlud2hreGNkY2xlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIwODk2MjgsImV4cCI6MjA5NzY2NTYyOH0.2wiAHbaoNoDva_tRseDAywVMu_6AioCGlVLgoVb0d6s';
 
 let events = [];
 let editingEventId = null;
 
-// API Helper (with safe header merging)
+// API Helper
 const H = () => ({
   'apikey': SUPABASE_KEY,
   'Authorization': 'Bearer ' + SUPABASE_KEY,
